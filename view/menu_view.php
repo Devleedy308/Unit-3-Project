@@ -1,31 +1,25 @@
 <?php include 'header.php'; ?>
+<h2>Menu</h2>
 
-<h2>Restaurant Menu</h2>
+<?php if (!empty($items)) : ?>
+    <div class="menu-grid">
+        <?php foreach ($items as $item): ?>
+            <div class="menu-card">
+                <h3 class="menu-title"><?= htmlspecialchars($item['name']) ?></h3>
+                <p class="menu-desc"><?= htmlspecialchars($item['description']) ?></p>
+                <p class="menu-price">$<?= number_format($item['price'], 2) ?></p>
+                <p class="menu-category"><?= htmlspecialchars($item['category']) ?></p>
 
-<?php if (empty($items)): ?>
-    <p>No menu items available.</p>
+                <form action="/controller/order_controller.php" method="post" class="add-to-cart-form">
+                    <input type="hidden" name="action" value="add_to_cart">
+                    <input type="hidden" name="item_id" value="<?= $item['item_id'] ?>">
+                    <input type="number" name="quantity" value="1" min="1" class="quantity-input">
+                    <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                </form>
+            </div>
+        <?php endforeach; ?>
+    </div>
 <?php else: ?>
-    <?php
-    // Group menu items by category
-    $grouped = [];
-    foreach ($items as $item) {
-        $grouped[$item['category']][] = $item;
-    }
-    ?>
-
-    <?php foreach ($grouped as $category => $menuItems): ?>
-        <h3><?= htmlspecialchars($category ?? 'Uncategorized') ?></h3>
-        <ul>
-            <?php foreach ($menuItems as $item): ?>
-                <li>
-                    <strong><?= htmlspecialchars($item['name']) ?></strong> -
-                    $<?= number_format($item['price'], 2) ?><br>
-                    <em><?= htmlspecialchars($item['description']) ?></em>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-        <hr>
-    <?php endforeach; ?>
+    <p>No menu items found.</p>
 <?php endif; ?>
 
-<?php include 'footer.php'; ?>
