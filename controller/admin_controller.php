@@ -68,5 +68,10 @@ switch ($action) {
     header('Location: ../index.php?action=manage_menu');
     exit();
 
+    case 'view_orders':
+    require_once(__DIR__ . '/../model/order_db.php');
+    $orders = get_all_orders();
+    include(__DIR__ . '/../admin/view_orders_view.php');
+    break;
 
 }
