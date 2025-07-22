@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 21, 2025 at 08:52 PM
+-- Generation Time: Jul 22, 2025 at 12:07 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -81,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(100) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
+  `role` enum('admin','user') DEFAULT 'user',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
