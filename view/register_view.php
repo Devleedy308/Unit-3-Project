@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+
 <h2>Register</h2>
 
 <form action="/controller/user_controller.php" method="post">
@@ -15,3 +16,5 @@
 
     <button type="submit">Register</button>
 </form>
+
+<?php include 'footer.php'; ?>

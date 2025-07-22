@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+
 <h2>Login</h2>
 
 <form action="/controller/user_controller.php" method="post">
@@ -12,3 +13,5 @@
 
     <button type="submit">Login</button>
 </form>
+
+<?php include 'footer.php'; ?>
