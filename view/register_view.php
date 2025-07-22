@@ -2,7 +2,7 @@
 
 <h2>Register</h2>
 
-<form action="/controller/user_controller.php" method="post">
+<form action="../controller/user_controller.php" method="post">
     <input type="hidden" name="action" value="register_user">
 
     <label>Name:</label>

@@ -2,7 +2,7 @@
 
 <h2>Login</h2>
 
-<form action="/controller/user_controller.php" method="post">
+<form action="../controller/user_controller.php" method="post">
     <input type="hidden" name="action" value="login_user">
     
     <label>Email:</label>

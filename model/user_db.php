@@ -20,6 +20,7 @@ function create_user(string $email, string $password, string $name): int|false {
         $stmt->execute();
         return $db->lastInsertId();
     } catch (PDOException $e) {
+        error_log("User Registration Error: " . $e->getMessage());
         return false;
     }
 }

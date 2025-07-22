@@ -34,9 +34,10 @@ $cart_total = 0;
     </table>
 
     <h3>Submit Your Order</h3>
-    <form action="index.php?action=submit_order" method="post">
-        <label for="customer_name">Your Name:</label>
-        <input type="text" name="customer_name" id="customer_name" required>
+    <p>Order will be placed under: <strong><?= htmlspecialchars($_SESSION['user']['user_name'] ?? 'Guest') ?></strong></p>
+
+    <form action="../controller/menu_controller.php" method="post">
+        <input type="hidden" name="action" value="checkout">
         <button type="submit">Place Order</button>
     </form>
 <?php endif; ?>
