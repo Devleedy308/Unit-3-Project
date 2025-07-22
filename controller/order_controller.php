@@ -49,6 +49,15 @@ switch ($action) {
         include(__DIR__ . '/../view/cart_view.php');
         break;
 
+    // Remove from cart
+    case 'remove_from_cart':
+    $item_id = filter_input(INPUT_POST, 'item_id', FILTER_VALIDATE_INT);
+    if (isset($_SESSION['order'][$item_id])) {
+        unset($_SESSION['order'][$item_id]);
+    }
+    header("Location: ../index.php?action=view_cart");
+    exit();
+
     // Submit order
     case 'submit_order':
         if (empty($_SESSION['order'])) {

@@ -36,7 +36,6 @@ switch ($action) {
     default:
         // Display default homepage
         include 'view/header.php';
-        echo '<h1>Welcome to the Restaurant Order System</h1>';
 
         if (!isset($_SESSION['user'])) {
             echo '<p><a href="controller/user_controller.php?action=show_login">Login</a></p>';
