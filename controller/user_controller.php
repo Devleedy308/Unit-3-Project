@@ -66,7 +66,7 @@ switch ($action) {
     case 'logout':
         session_unset();
         session_destroy();
-        header('Location: ../controller/user_controller.php?action=show_login');
+        header('Location: /Unit-3-Project/controller/user_controller.php?action=show_login');
         exit;
 
     case 'show_register':
