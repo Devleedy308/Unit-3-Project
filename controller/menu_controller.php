@@ -1,5 +1,7 @@
  <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once(__DIR__ . '/../model/menu_db.php');
 require_once(__DIR__ . '/../model/order_db.php');
 
@@ -9,7 +11,7 @@ $action = $_POST['action'] ?? $_GET['action'] ?? 'show_menu';
 switch ($action) {
     case 'show_menu':
         $items = get_all_menu_items();
-        include('../view/menu_view.php');
+        include(__DIR__ . '/../view/menu_view.php');
         break;
 
     case 'add_to_cart':

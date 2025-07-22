@@ -38,8 +38,10 @@ $cart_total = 0;
 
     <form action="../controller/order_controller.php" method="post">
     <input type="hidden" name="action" value="submit_order">
-        <button type="submit">Place Order</button>
-    </form>
+    <input type="hidden" name="customer_name" value="<?= htmlspecialchars($_SESSION['user']['user_name'] ?? 'Guest') ?>">
+    <button type="submit">Place Order</button>
+</form>
+
 <?php endif; ?>
 
 <?php include 'footer.php'; ?>

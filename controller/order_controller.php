@@ -56,7 +56,7 @@ switch ($action) {
             exit();
         }
 
-        $customer_name = filter_input(INPUT_POST, 'customer_name', FILTER_SANITIZE_STRING);
+        $customer_name = trim($_POST['customer_name'] ?? '');
         if (!$customer_name) {
             echo "Customer name is required.";
             exit();

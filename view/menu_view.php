@@ -5,7 +5,7 @@
     <p style="color: green;"><strong>Item added to cart!</strong></p>
 <?php endif; ?>
 
-<p><a href="/controller/order_controller.php?action=view_cart">🛒 View Cart</a></p>
+<p><a href="/Unit-3-Project/controller/order_controller.php?action=view_cart">🛒 View Cart</a></p>
 
 <?php if (!empty($items)) : ?>
     <div class="menu-grid">
@@ -16,7 +16,7 @@
                 <p class="menu-price">$<?= number_format($item['price'], 2) ?></p>
                 <p class="menu-category"><?= htmlspecialchars($item['category']) ?></p>
 
-                <form action="/controller/order_controller.php" method="post" class="add-to-cart-form">
+                <form action="/Unit-3-Project/controller/order_controller.php" method="post" class="add-to-cart-form">
                     <input type="hidden" name="action" value="add_to_cart">
                     <input type="hidden" name="item_id" value="<?= $item['item_id'] ?>">
                     <input type="number" name="quantity" value="1" min="1" class="quantity-input">
@@ -30,3 +30,5 @@
 <?php endif; ?>
 
 <?php include 'footer.php'; ?>
+<p><a href="/Unit-3-Project/index.php">Return Home</a></p>
+
