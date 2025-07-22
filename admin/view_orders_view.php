@@ -47,3 +47,4 @@ include '../view/header.php';
 <?php endif; ?>
 
 <?php include '../view/footer.php'; ?>
+<p><a href="../admin/dashboard_view.php">Return to Dashboard</a></p>

@@ -1,5 +1,8 @@
  <?php
-require_once(__DIR__ . '/../controller/auth.php');
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once(__DIR__ . '/../controller/auth.php'); 
 require_login();
 require_admin();
 include '../view/header.php';
@@ -8,7 +11,9 @@ include '../view/header.php';
 <h2>Manage Menu Items</h2>
 
 <h3>Add New Menu Item</h3>
-<form action="index.php?action=add_menu_item" method="post">
+<form action="../controller/admin_controller.php" method="post">
+    <input type="hidden" name="action" value="add_menu_item">
+    
     <label for="name">Name:</label><br>
     <input type="text" name="name" id="name" required><br>
 
@@ -45,9 +50,12 @@ include '../view/header.php';
                 <td><?= htmlspecialchars($item['category']) ?></td>
                 <td><?= htmlspecialchars($item['description']) ?></td>
                 <td>
-                    <a href="index.php?action=edit_menu_form&item_id=<?= $item['item_id'] ?>">Edit</a>
+                    <!-- Edit -->
+                    <a href="../controller/admin_controller.php?action=edit_menu_form&item_id=<?= $item['item_id'] ?>">Edit</a>
 
-                    <form action="index.php?action=delete_menu_item" method="post" onsubmit="return confirm('Delete this item?');">
+                    <!-- Delete -->
+                    <form action="../controller/admin_controller.php" method="post" style="display:inline;" onsubmit="return confirm('Delete this item?');">
+                        <input type="hidden" name="action" value="delete_menu_item">
                         <input type="hidden" name="item_id" value="<?= $item['item_id'] ?>">
                         <button type="submit">Delete</button>
                     </form>
@@ -58,3 +66,4 @@ include '../view/header.php';
 <?php endif; ?>
 
 <?php include '../view/footer.php'; ?>
+<p><a href="../admin/dashboard_view.php">Return to Dashboard</a></p>

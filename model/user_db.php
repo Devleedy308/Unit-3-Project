@@ -45,10 +45,17 @@ function get_user_by_email(string $email): array|false {
 function verify_user(string $email, string $password): array|false {
     $user = get_user_by_email($email);
 
-    if ($user && password_verify($password, $user['password_hash'])) {
-        return $user;
+    if (!$user) {
+        echo "User not found for $email<br>";
+        return false;
     }
 
-    return false;
+    if (!password_verify($password, $user['password_hash'])) {
+        echo "Password doesn't match<br>";
+        return false;
+    }
+
+    return $user;
 }
+
 

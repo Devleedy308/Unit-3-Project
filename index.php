@@ -16,7 +16,7 @@ session_start();
     <?php else: ?>
         <p>Welcome, <?= htmlspecialchars($_SESSION['user']['user_name']) ?>!</p>
         <p><a href="controller/menu_controller.php?action=show_menu">Go to Menu</a></p>
-        <p><a href="controller/auth.php?action=logout">Logout</a></p>
+        <p><a href="controller/user_controller.php?action=logout">Logout</a></p>
     <?php endif; ?>
 </body>
 </html>
