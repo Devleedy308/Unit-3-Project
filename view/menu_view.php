@@ -1,5 +1,11 @@
-<?php include 'header.php'; ?>
+ <?php include 'header.php'; ?>
 <h2>Menu</h2>
+
+<?php if (isset($_GET['added']) && $_GET['added'] == 'true'): ?>
+    <p style="color: green;"><strong>Item added to cart!</strong></p>
+<?php endif; ?>
+
+<p><a href="/controller/order_controller.php?action=view_cart">🛒 View Cart</a></p>
 
 <?php if (!empty($items)) : ?>
     <div class="menu-grid">
@@ -23,3 +29,4 @@
     <p>No menu items found.</p>
 <?php endif; ?>
 
+<?php include 'footer.php'; ?>

@@ -41,12 +41,12 @@ switch ($action) {
             ];
         }
 
-        header("Location: ../index.php?action=view_cart");
+        header("Location: ../controller/menu_controller.php?action=show_menu&added=true");
         exit();
 
     // Show cart
     case 'view_cart':
-        include('../view/cart_view.php');
+        include(__DIR__ . '/../view/cart_view.php');
         break;
 
     // Submit order
